@@ -7,4 +7,7 @@ source ${SCRIPT_DIR}/bash-colors/bash-colors.sh
 set -eu
 
 # Print commands except echo commands
-trap '[[ $BASH_COMMAND != cecho* ]] && echo $BASH_COMMAND' DEBUG
+PROMPT="Press any key to continue"
+
+trap '[[ $BASH_COMMAND != cecho* ]] && echo $BASH_COMMAND && read -n 1 -p "$PROMPT"' DEBUG
+
