@@ -1,6 +1,7 @@
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 import java.util.Set;
 import java.util.logging.Logger;
 
@@ -23,7 +24,9 @@ public class Validator {
     public Validator() throws IOException {
 
         engine = Engine.create();
-        source = Source.newBuilder("js", new File(System.getProperty("java.home"), VALIDATOR_NPM_MODULE_PATH)).build();
+        URL url = getClass().getResource(VALIDATOR_NPM_MODULE_PATH);
+        File file = new File(url.getPath());
+        source = Source.newBuilder("js", file).build();
         try (Context context = Context.newBuilder().engine(engine).build()) {
             context.eval(source);
             logger.fine(context.getBindings("js").getMemberKeys().toString());
