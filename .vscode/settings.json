@@ -1,0 +1,16 @@
+{
+  "workbench.statusBar.visible": false,
+  "workbench.activityBar.visible": false,
+  "explorer.openEditors.visible": 0,
+  "editor.minimap.enabled": false,
+  "editor.renderWhitespace": "none",
+  "editor.renderIndentGuides": false,
+  "terminal.integrated.shell.linux": "/bin/bash",
+  "editor.formatOnSave": false,
+  "terminal.integrated.defaultLocation": "editor",
+  "java.completion.enabled": false,
+  "java.debug.settings.enableRunDebugCodeLens": false,
+  "java.test.editor.enableShortcuts": false,
+  "editor.fontSize": 24,
+  "terminal.integrated.fontSize": 24,
+}
