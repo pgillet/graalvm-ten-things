@@ -1,6 +1,7 @@
-{
+  {
   "workbench.statusBar.visible": false,
   "workbench.activityBar.visible": false,
+  "breadcrumbs.enabled": false,
   "explorer.openEditors.visible": 0,
   "editor.minimap.enabled": false,
   "editor.renderWhitespace": "none",
