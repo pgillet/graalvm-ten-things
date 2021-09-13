@@ -1,0 +1,9 @@
+*.json
+config-dir
+eula.txt
+logs
+minecraft-server
+minecraft-server.build_artifacts.txt
+server.jar
+server.properties
+world
