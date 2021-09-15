@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-source ../utils/bash-env.sh
+. ../utils/bash-env.sh
 
 echo "Generate large text file"
 make large.txt
