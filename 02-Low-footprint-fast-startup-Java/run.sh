@@ -4,7 +4,7 @@
 echo "Generate small text file"
 make small.txt
 
-stat -c "%s %n" small.txt
+du -h small.txt
 
 echo "Compile"
 $GRAALVM_CE_HOME/bin/javac TopTen.java
@@ -15,7 +15,7 @@ echo "Run with GraalVM CE"
 echo "Build native image"
 $GRAALVM_CE_HOME/bin/native-image --no-server --no-fallback TopTen
 
-stat -c "%s %n" topten
+du -h topten
 
 echo "Inspect the shared libraries used by the topten native executable \U1F9D0"
 ldd topten
