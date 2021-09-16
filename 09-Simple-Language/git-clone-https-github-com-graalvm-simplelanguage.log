@@ -1,0 +1,8 @@
+Cloning into 'simplelanguage'...
+remote: Enumerating objects: 3146, done.
+remote: Counting objects: 100% (187/187), done.
+remote: Compressing objects: 100% (109/109), done.
+remote: Total 3146 (delta 78), reused 154 (delta 45), pack-reused 2959
+Receiving objects: 100% (3146/3146), 1.42 MiB | 1.02 MiB/s, done.
+Resolving deltas: 100% (1665/1665), done.
+

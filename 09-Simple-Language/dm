@@ -9,17 +9,29 @@ pe '$GRAALVM_CE_HOME/bin/gu install native-image'
 pe '$GRAALVM_CE_HOME/bin/gu list'
 
 # Build
-pe 'export SL_BUILD_NATIVE=false'
-pe 'du -h ./native/slnative'
-pe 'export JAVA_HOME=$GRAALVM_CE_HOME'
-pe 'mvn package'
+pe 'cd ~/Workbench/Projects/graal-demo/'
+p 'git clone https://github.com/graalvm/simplelanguage'
+cat ~/Workbench/Projects/graal-demo/graalvm-ten-things/09-Simple-Language/git-clone-https-github-com-graalvm-simplelanguage.log
+pe 'cd simplelanguage'
+export SL_BUILD_NATIVE=false
+export JAVA_HOME=$GRAALVM_CE_HOME
+pe 'mvn package -DskipTests'
 
 # Run examples
 pe 'cat language/tests/HelloWorld.sl'
-$JAVA_HOME/bin/java \
-    -cp launcher/target/launcher-21.2.0-SNAPSHOT.jar \
+
+read
+echo '$ $GRAALVM_CE_HOME/bin/java \
+    -cp launcher/target/launcher-21.2.0.jar \
+    -Dtruffle.class.path.append=language/target/simplelanguage.jar \
+    com.oracle.truffle.sl.launcher.SLMain language/tests/HelloWorld.sl'
+read
+
+$GRAALVM_CE_HOME/bin/java \
+    -cp launcher/target/launcher-21.2.0.jar \
     -Dtruffle.class.path.append=language/target/simplelanguage.jar \
     com.oracle.truffle.sl.launcher.SLMain language/tests/HelloWorld.sl
+
 pe 'more sl'
 pe './sl language/tests/HelloWorld.sl'
 
@@ -35,5 +47,6 @@ pe '$GRAALVM_CE_HOME/bin/gu -L install component/sl-component.jar'
 pe '$GRAALVM_CE_HOME/bin/gu list'
 
 # Simple Language Native Image
+pe 'du -h ./native/slnative'
 pe 'time ./sl language/tests/HelloWorld.sl'
 pe 'time ./native/slnative language/tests/HelloWorld.sl'
