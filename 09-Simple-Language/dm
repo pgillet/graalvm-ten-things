@@ -5,8 +5,8 @@
 clear
 
 # Setup
-pe '$GRAALVM_EE_HOME/bin/gu list'
-pe '$GRAALVM_EE_HOME/bin/gu install native-image'
+pe '$GRAALVM_CE_HOME/bin/gu install native-image'
+pe '$GRAALVM_CE_HOME/bin/gu list'
 
 # Build
 pe 'export SL_BUILD_NATIVE=false'
@@ -31,8 +31,8 @@ pe './sl language/tests/Fibonacci.sl'
 
 # Simple Language Component for GraalVM
 pe 'du -h component/sl-component.jar'
-pe '$GRAALVM_EE_HOME/bin/gu -L install component/sl-component.jar'
-pe '$GRAALVM_EE_HOME/bin/gu list'
+pe '$GRAALVM_CE_HOME/bin/gu -L install component/sl-component.jar'
+pe '$GRAALVM_CE_HOME/bin/gu list'
 
 # Simple Language Native Image
 pe 'time ./sl language/tests/HelloWorld.sl'
