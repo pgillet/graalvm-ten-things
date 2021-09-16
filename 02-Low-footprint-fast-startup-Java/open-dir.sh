@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-code . TopTen.java Makefile run.sh
+code -r . TopTen.java Makefile run.sh
