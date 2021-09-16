@@ -17,8 +17,10 @@ pe 'cat HelloWorld.java'
 pe '$GRAALVM_CE_HOME/bin/javac HelloWorld.java'
 pe '$GRAALVM_CE_HOME/bin/java -truffle HelloWorld'
 
-pe 'cd ~/Workbench/Projects/graal-demo/spring-petclinic'
-pe 'git remote -v'
+pe 'cd ~/Workbench/Projects/graal-demo/'
+p 'git clone https://github.com/spring-projects/spring-petclinic.git'
+cat ~/Workbench/Projects/graal-demo/graalvm-ten-things/10-Espresso-Java-on-Truffle/git-clone-https-github-com-spring-projects-spring-petclinic-git.log
+pe 'cd spring-petclinic/'
 pe 'mvn package -DskipTests'
 
 pe '$GRAALVM_CE_HOME/bin/java -truffle -jar target/spring-petclinic-*.jar'

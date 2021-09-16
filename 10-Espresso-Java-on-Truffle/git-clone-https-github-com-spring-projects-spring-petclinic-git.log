@@ -1,0 +1,8 @@
+Cloning into 'spring-petclinic'...
+remote: Enumerating objects: 8615, done.
+remote: Counting objects: 100% (17/17), done.
+remote: Compressing objects: 100% (15/15), done.
+remote: Total 8615 (delta 3), reused 7 (delta 1), pack-reused 8598
+Receiving objects: 100% (8615/8615), 7.28 MiB | 1.01 MiB/s, done.
+Resolving deltas: 100% (3270/3270), done.
+

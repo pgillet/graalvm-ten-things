@@ -12,7 +12,7 @@ pe '$GRAALVM_CE_HOME/bin/gu list'
 pe 'cd ~/Workbench/Projects/graal-demo/'
 p 'git clone https://github.com/graalvm/simplelanguage'
 cat ~/Workbench/Projects/graal-demo/graalvm-ten-things/09-Simple-Language/git-clone-https-github-com-graalvm-simplelanguage.log
-pe 'cd simplelanguage'
+pe 'cd simplelanguage/'
 export SL_BUILD_NATIVE=false
 export JAVA_HOME=$GRAALVM_CE_HOME
 pe 'mvn package -DskipTests'
