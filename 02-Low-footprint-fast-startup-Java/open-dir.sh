@@ -1,3 +1,5 @@
 #!/usr/bin/env bash
 
-code -r . TopTen.java Makefile run.sh
+SCRIPT_DIR="$(dirname ${BASH_SOURCE[0]})"
+
+code -r ${SCRIPT_DIR} TopTen.java Makefile run.sh
