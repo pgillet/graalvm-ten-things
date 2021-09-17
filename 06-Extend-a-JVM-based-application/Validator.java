@@ -1,12 +1,7 @@
-
-import java.io.File;
 import java.io.IOException;
-import java.net.URL;
-import java.util.Set;
-import java.util.logging.Logger;
+import java.io.InputStreamReader;
 
 import org.graalvm.polyglot.Context;
-import org.graalvm.polyglot.Engine;
 import org.graalvm.polyglot.Source;
 import org.graalvm.polyglot.Value;
 
@@ -14,38 +9,24 @@ public class Validator {
 
     /**
      * Will be automatically included by the "linker" in the native image.
-     */
-    private static final String VALIDATOR_NPM_MODULE_PATH = "node_modules/validator/validator.js";
-    private static final Logger logger = Logger.getLogger(Validator.class.getName());
+     */    
+    private static String VALIDATOR_NPM_MODULE_PATH = "node_modules/validator/validator.js";
+    private static String JAVASCRIPT = "js";
+    private Value validator;
 
-    private final Engine engine;
-    private final Source source;
 
     public Validator() throws IOException {
-
-        engine = Engine.create();
-        URL url = getClass().getResource(VALIDATOR_NPM_MODULE_PATH);
-        File file = new File(url.getPath());
-        source = Source.newBuilder("js", file).build();
-        try (Context context = Context.newBuilder().engine(engine).build()) {
-            context.eval(source);
-            logger.fine(context.getBindings("js").getMemberKeys().toString());
-            Value validator = context.getBindings("js").getMember("validator");
-            Set<String> memberKeys = validator.getMemberKeys();
-            logger.fine(memberKeys.toString());
-            assert memberKeys.contains("isEmail");
-        }
+        Context context = Context.newBuilder(JAVASCRIPT).build();
+        InputStreamReader code = new InputStreamReader(Validator.class.getClassLoader().getResourceAsStream(VALIDATOR_NPM_MODULE_PATH));
+        Source source = Source.newBuilder(JAVASCRIPT, code, VALIDATOR_NPM_MODULE_PATH).build();
+        context.eval(source);
+        validator = context.getBindings(JAVASCRIPT).getMember("validator");
     }
 
     private boolean doValidate(String function, Object... args) {
-        try (Context context = Context.newBuilder().engine(engine).build()) {
-            context.eval(source);
-            Value validator = context.getBindings("js").getMember("validator");
-            Value funcValidator = validator.getMember(function);
-            boolean result = funcValidator.execute(args).asBoolean();
-            logger.fine(String.format("%s \"%s\" = %b", function, args[0], result));
-            return result;
-        }
+        Value funcValidator = validator.getMember(function);
+        boolean result = funcValidator.execute(args).asBoolean();
+        return result;
     }
 
     public boolean isEmail(String str) {
