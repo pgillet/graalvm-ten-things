@@ -1,0 +1,16 @@
+micronaut:
+  application:
+    name: weather
+
+checkip:
+  api:
+    url: https://checkip.amazonaws.com/
+
+geocoding:
+  api:
+    url: http://ip-api.com/json/
+
+weather:
+  api:
+    url: https://api.weatherbit.io/v2.0/
+    key: dummy

@@ -1,0 +1,47 @@
+plugins {
+    id("com.github.johnrengelman.shadow") version "7.0.0"
+    id("io.micronaut.application") version "2.0.4"
+}
+
+version = "0.1"
+group = "test"
+
+repositories {
+    mavenCentral()
+}
+
+micronaut {
+    testRuntime("junit5")
+    processing {
+        incremental(true)
+        annotations("test.*")
+    }
+}
+
+dependencies {
+    annotationProcessor("info.picocli:picocli-codegen")
+    annotationProcessor("io.micronaut:micronaut-http-validation")
+    implementation("info.picocli:picocli")
+    implementation("io.micronaut:micronaut-http-client")
+    implementation("io.micronaut:micronaut-runtime")
+    implementation("io.micronaut.picocli:micronaut-picocli")
+    implementation("io.micronaut.xml:micronaut-jackson-xml")
+    implementation("javax.annotation:javax.annotation-api")
+    runtimeOnly("ch.qos.logback:logback-classic")
+    compileOnly("org.graalvm.nativeimage:svm")
+
+    implementation("io.micronaut:micronaut-validation")
+
+}
+
+
+application {
+    mainClass.set("test.TestCommand")
+}
+java {
+    sourceCompatibility = JavaVersion.toVersion("11")
+    targetCompatibility = JavaVersion.toVersion("11")
+}
+
+
+
