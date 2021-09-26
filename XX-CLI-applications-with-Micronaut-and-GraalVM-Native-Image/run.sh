@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-. ../../utils/bash-env.sh
+. ../utils/bash-env.sh
 
 echo "Build JAR"
 ./gradlew clean build
