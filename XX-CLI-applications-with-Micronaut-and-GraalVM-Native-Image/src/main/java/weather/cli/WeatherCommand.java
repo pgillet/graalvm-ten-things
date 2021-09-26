@@ -6,7 +6,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import picocli.CommandLine;
 import picocli.CommandLine.Command;
+import picocli.CommandLine.Model.OptionSpec;
 import picocli.CommandLine.Option;
+import picocli.CommandLine.ParseResult;
 import weather.cli.api.*;
 
 import java.io.BufferedReader;
@@ -38,10 +40,10 @@ public class WeatherCommand implements Runnable {
 
     @Option(names = {"-f", "--forecast"},
             description = "Number of forecast days to fetch (between 1 and 16).",
-            defaultValue = "0",
+            defaultValue = "1",
             showDefaultValue = NEVER)
     public void setForecast(int nbDays) {
-        if (nbDays > 16) {
+        if (nbDays < 1 || nbDays > 16) {
             throw new CommandLine.ParameterException(
                     spec.commandLine(),
                     "Forecast must be between 1 and 16 days");
@@ -76,8 +78,11 @@ public class WeatherCommand implements Runnable {
     }
 
     public void run() {
+
+        ParseResult pr = spec.commandLine().getParseResult();
+
         try {
-            if (city == null) {
+            if (!pr.hasMatchedOption("--city")) {
                 // Geocoding
                 String ipAddress = getExternalIPAddress();
 
@@ -88,7 +93,7 @@ public class WeatherCommand implements Runnable {
                 LOG.info("Location detected: {}, {}", city, country);
             }
 
-            if (nbDays > 0) {
+            if (pr.hasMatchedOption("--forecast")) {
                 // Forecast
                 ForecastResponse forecastResponse = weatherClient.forecastByCityName(city, country, nbDays);
                 System.out.println(forecastResponse);

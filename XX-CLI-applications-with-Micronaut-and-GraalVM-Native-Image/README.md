@@ -1,12 +1,13 @@
-## Micronaut 3.0.1 Documentation
+# Micronaut Weather CLI application
 
-- [User Guide](https://docs.micronaut.io/3.0.1/guide/index.html)
-- [API Reference](https://docs.micronaut.io/3.0.1/api/index.html)
-- [Configuration Reference](https://docs.micronaut.io/3.0.1/guide/configurationreference.html)
-- [Micronaut Guides](https://guides.micronaut.io/index.html)
----
+_This repository is inspired and updated from [micronaut-weather-cli](https://github.com/orevial/micronaut-weather-cli) by [Olivier Revial](https://github.com/orevial)._
 
-## Feature http-client documentation
+The goal of this repository is to demonstrate a real-world use case of Micronaut with Picocli and GraalVM to generate powerful yet simple native images of a command-line application.
 
-- [Micronaut HTTP Client documentation](https://docs.micronaut.io/latest/guide/index.html#httpClient)
+This application is built:
 
+* With **Micronaut** as its base:  to show how to use HTTP Clients & other Micronaut such as auto-config
+* With **Picocli** to handle all CLI specificities such as options and positional parameters parsing or displaying useful help messages
+* With **GraalVM** "native-image" feature enabled in Micronaut so we can easily compile this application down to a native binary.
+* With **Weatherbit.io** [weather API](https://www.weatherbit.io/api/) to show interactions with remote services
+* With ♥️, but there can still be bugs or problems, contributions are more than welcome !
