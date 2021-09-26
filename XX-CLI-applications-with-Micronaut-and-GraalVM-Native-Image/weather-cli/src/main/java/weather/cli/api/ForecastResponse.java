@@ -1,4 +1,4 @@
-package weather.api;
+package weather.cli.api;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.micronaut.core.annotation.Introspected;
@@ -42,7 +42,7 @@ public class ForecastResponse {
     @Override
     public String toString() {
         String header = data.size() + " Day Weather Forecast at " + cityName + ", " + countryCode + "\n";
-        String forecasts = data.stream().map(Object::toString).collect(Collectors.joining("\n"));
+        String forecasts = data.stream().map(Object::toString).collect(Collectors.joining("\n\n"));
         String result = String.join("\n", header, forecasts);
 
         return result;

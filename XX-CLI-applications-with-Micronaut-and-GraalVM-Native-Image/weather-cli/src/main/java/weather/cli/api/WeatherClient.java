@@ -1,4 +1,4 @@
-package weather.api;
+package weather.cli.api;
 
 import io.micronaut.http.annotation.Get;
 import io.micronaut.http.annotation.QueryValue;
@@ -17,10 +17,10 @@ public interface WeatherClient {
     @Get("/forecast/daily?key=${weather.api.key}")
     ForecastResponse forecastByLatLon(@QueryValue Double lat,
                                       @QueryValue Double lon,
-                                        @QueryValue(defaultValue = "1") int days);
+                                      @QueryValue(defaultValue = "1") int days);
 
     @Get("/forecast/daily?key=${weather.api.key}")
     ForecastResponse forecastByCityName(@QueryValue String city,
-                              @QueryValue String country,
-                              @QueryValue(defaultValue = "1") int days);
+                                        @QueryValue String country,
+                                        @QueryValue(defaultValue = "1") int days);
 }

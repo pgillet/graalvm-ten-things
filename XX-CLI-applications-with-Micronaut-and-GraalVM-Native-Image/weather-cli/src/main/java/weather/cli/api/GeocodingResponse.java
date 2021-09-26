@@ -1,4 +1,4 @@
-package weather.api;
+package weather.cli.api;
 
 import io.micronaut.core.annotation.Introspected;
 

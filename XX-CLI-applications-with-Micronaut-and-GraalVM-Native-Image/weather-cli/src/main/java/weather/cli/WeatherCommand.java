@@ -1,4 +1,4 @@
-package weather;
+package weather.cli;
 
 import io.micronaut.configuration.picocli.PicocliRunner;
 import jakarta.inject.Inject;
@@ -7,7 +7,7 @@ import org.slf4j.LoggerFactory;
 import picocli.CommandLine;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Option;
-import weather.api.*;
+import weather.cli.api.*;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -37,7 +37,7 @@ public class WeatherCommand implements Runnable {
     private Integer nbDays;
 
     @Option(names = {"-f", "--forecast"},
-            description = "Number of forecast days to fetch (between 1 and 16)",
+            description = "Number of forecast days to fetch (between 1 and 16).",
             defaultValue = "0",
             showDefaultValue = NEVER)
     public void setForecast(int nbDays) {
@@ -50,7 +50,7 @@ public class WeatherCommand implements Runnable {
     }
 
     @Option(names = {"--city"},
-            description = "A city name. If not specified, the location is automatically detected")
+            description = "A city name. If not specified, the location is automatically detected.")
     private String city;
 
     private static final String DEFAULT_COUNTRY_CODE = "FR";
@@ -59,7 +59,7 @@ public class WeatherCommand implements Runnable {
     private String country;
 
     @Option(names = {"--country"},
-            description = "A 2-letter country code as defined in ISO 3166",
+            description = "A 2-letter country code as defined in ISO 3166.",
             defaultValue = DEFAULT_COUNTRY_CODE,
             showDefaultValue = ALWAYS)
     public void setCountry(String country) {
@@ -79,14 +79,9 @@ public class WeatherCommand implements Runnable {
         try {
             if (city == null) {
                 // Geocoding
-                URL whatismyip = new URL("http://checkip.amazonaws.com");
-                BufferedReader in = new BufferedReader(new InputStreamReader(
-                        whatismyip.openStream()));
+                String ipAddress = getExternalIPAddress();
 
-                String ip = in.readLine();
-                LOG.info("IP address is {}", ip);
-
-                GeocodingResponse geocodingResponse = geocodingClient.getIPInfo(ip);
+                GeocodingResponse geocodingResponse = geocodingClient.getIPInfo(ipAddress);
                 city = geocodingResponse.getCity();
                 country = geocodingResponse.getCountryCode();
 
@@ -108,4 +103,16 @@ public class WeatherCommand implements Runnable {
         }
 
     }
+
+    private String getExternalIPAddress() throws IOException {
+        URL whatismyip = new URL("http://checkip.amazonaws.com");
+        BufferedReader in = new BufferedReader(new InputStreamReader(
+                whatismyip.openStream()));
+
+        String ip = in.readLine();
+        LOG.info("IP address is {}", ip);
+
+        return ip;
+    }
+
 }

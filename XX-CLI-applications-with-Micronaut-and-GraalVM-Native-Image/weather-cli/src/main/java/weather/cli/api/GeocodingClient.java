@@ -1,4 +1,4 @@
-package weather.api;
+package weather.cli.api;
 
 import io.micronaut.http.annotation.Get;
 import io.micronaut.http.annotation.PathVariable;
@@ -9,5 +9,5 @@ public interface GeocodingClient {
 
     @Get
     GeocodingResponse getIPInfo(@PathVariable String ipAddress);
-    
+
 }

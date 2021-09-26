@@ -1,19 +1,24 @@
-package weather.api;
+package weather.cli.api;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.micronaut.core.annotation.Introspected;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Map;
 
 @Introspected
 public class WeatherObservation {
 
+    private static final DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("E, d LLL");
+
     private String cityName;
     private String countryCode;
     private String stateCode;
-    private String sunrise;
-    private String sunset;
+    private LocalTime sunrise;
+    private LocalTime sunset;
     private double windSpeed;
     private String windDirection;
     private double temperature;
@@ -38,8 +43,8 @@ public class WeatherObservation {
         this.cityName = cityName;
         this.countryCode = countryCode;
         this.stateCode = stateCode;
-        this.sunrise = sunrise;
-        this.sunset = sunset;
+        this.sunrise = LocalTime.parse(sunrise).plusHours(2); // TODO: Use OffsetTime instead?
+        this.sunset = LocalTime.parse(sunset).plusHours(2);
         this.windSpeed = windSpeed * 3.6;
         this.windDirection = windDirection;
         this.temperature = temperature;
@@ -61,11 +66,11 @@ public class WeatherObservation {
         return stateCode;
     }
 
-    public String getSunrise() {
+    public LocalTime getSunrise() {
         return sunrise;
     }
 
-    public String getSunset() {
+    public LocalTime getSunset() {
         return sunset;
     }
 
@@ -99,7 +104,7 @@ public class WeatherObservation {
 
     @Override
     public String toString() {
-        return cityName + ", " + countryCode + "\n\"" +
+        return dateTimeFormatter.format(LocalDate.now()) + " at " + cityName + ", " + countryCode + "\n\"" +
                 weatherDescription + "\"\n" +
                 "Temp: " + temperature + "°C (felt " + apparentTemperature + " °C)\n" +
                 "Wind: " + windSpeed + " km/h to " + windDirection + "\n" +

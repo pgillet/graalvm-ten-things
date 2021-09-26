@@ -1,14 +1,18 @@
-package weather.api;
+package weather.cli.api;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.micronaut.core.annotation.Introspected;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Map;
 
 @Introspected
 public class ForecastObservation {
 
-    private String forecastDate;
+    private static final DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("E, d LLL");
+
+    private LocalDate forecastDate;
     private double windSpeed;
     private String windDirection;
     private double avgTemparature;
@@ -26,8 +30,8 @@ public class ForecastObservation {
                                @JsonProperty("max_temp") double maxTemperature,
                                @JsonProperty("pop") double precipitationProbability,
                                @JsonProperty("clouds") double avgCloudCoverage,
-                               @JsonProperty("weather") Map<String,Object> weather) {
-        this.forecastDate = forecastDate;
+                               @JsonProperty("weather") Map<String, Object> weather) {
+        this.forecastDate = LocalDate.parse(forecastDate);
         this.windSpeed = windSpeed;
         this.windDirection = windDirection;
         this.avgTemparature = avgTemparature;
@@ -38,7 +42,7 @@ public class ForecastObservation {
         this.weatherDescription = (String) weather.get("description");
     }
 
-    public String getForecastDate() {
+    public LocalDate getForecastDate() {
         return forecastDate;
     }
 
@@ -76,7 +80,7 @@ public class ForecastObservation {
 
     @Override
     public String toString() {
-        return forecastDate + "\n\"" +
+        return dateTimeFormatter.format(forecastDate) + "\n\"" +
                 weatherDescription + "\"\n" +
                 "Avg temp: " + avgTemparature + "°C (Min " + minTemperature + " °C, Max " + maxTemperature + " °C)\n" +
                 "Wind: " + windSpeed + " km/h to " + windDirection + "\n" +
