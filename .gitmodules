@@ -1,3 +1,6 @@
 [submodule "08-Graalpython-Java-example/graalpython-java-example"]
 	path = 08-Graalpython-Java-example/graalpython-java-example
 	url = git@github.com:hpi-swa-lab/graalpython-java-example.git
+[submodule "10-Espresso-Java-on-Truffle/spring-petclinic"]
+	path = 10-Espresso-Java-on-Truffle/spring-petclinic
+	url = https://github.com/spring-projects/spring-petclinic.git
