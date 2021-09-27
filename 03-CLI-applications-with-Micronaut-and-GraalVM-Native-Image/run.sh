@@ -1,8 +1,10 @@
 #!/usr/bin/env bash
 . ../utils/bash-env.sh
 
+cd micronaut-weather-cli/
+
 echo "Build JAR"
-./gradlew clean build
+./gradlew build
 
 export WEATHER_API_KEY=c8d35938f3e9430f8cda6aba0d216316
 
@@ -14,10 +16,11 @@ JAVA_HOME=${GRAALVM_CE_HOME}
 ./gradlew nativeImage
 
 echo "Run Native Image"
-build/native-image/application -h
+mv build/native-image/application weather
+./weather -h
 
-build/native-image/application
+./weather
 
-build/native-image/application --city Toulouse
+./weather --city Toulouse
 
-build/native-image/application --city Toulouse --forecast 10
+./weather --city Toulouse --forecast 10
