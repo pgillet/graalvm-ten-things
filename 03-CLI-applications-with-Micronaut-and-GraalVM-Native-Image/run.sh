@@ -6,8 +6,6 @@ cd micronaut-weather-cli/
 echo "Build JAR"
 ./gradlew build
 
-export WEATHER_API_KEY=c8d35938f3e9430f8cda6aba0d216316
-
 echo "Run JAR"
 $GRAALVM_CE_HOME/bin/java -jar build/libs/weather-0.1-all.jar -h
 
