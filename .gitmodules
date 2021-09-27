@@ -4,3 +4,6 @@
 [submodule "10-Espresso-Java-on-Truffle/spring-petclinic"]
 	path = 10-Espresso-Java-on-Truffle/spring-petclinic
 	url = https://github.com/spring-projects/spring-petclinic.git
+[submodule "03-CLI-applications-with-Micronaut-and-GraalVM-Native-Image/micronaut-weather-cli"]
+	path = 03-CLI-applications-with-Micronaut-and-GraalVM-Native-Image/micronaut-weather-cli
+	url = git@github.com:pgillet/micronaut-weather-cli.git
