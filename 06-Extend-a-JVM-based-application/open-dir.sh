@@ -4,4 +4,4 @@ SCRIPT_DIR="$(dirname ${BASH_SOURCE[0]})"
 
 cd ${SCRIPT_DIR}
 
-code -r . jit-aot.png TopTen.java Makefile run.sh
+code -r . rationale-reuse-code.png use-case-input-validation.png run.sh

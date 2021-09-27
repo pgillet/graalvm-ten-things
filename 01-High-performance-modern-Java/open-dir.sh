@@ -2,4 +2,6 @@
 
 SCRIPT_DIR="$(dirname ${BASH_SOURCE[0]})"
 
-code -r ${SCRIPT_DIR} TopTen.java Makefile run.sh
+cd ${SCRIPT_DIR}
+
+code -r . title.png java-ecosystem.png graalvm-ad.png graalvm-ce-ee.png TopTen.java Makefile run.sh
