@@ -7,3 +7,6 @@
 [submodule "03-CLI-applications-with-Micronaut-and-GraalVM-Native-Image/micronaut-weather-cli"]
 	path = 03-CLI-applications-with-Micronaut-and-GraalVM-Native-Image/micronaut-weather-cli
 	url = git@github.com:pgillet/micronaut-weather-cli.git
+[submodule "09-Simple-Language/simplelanguage"]
+	path = 09-Simple-Language/simplelanguage
+	url = https://github.com/graalvm/simplelanguage
