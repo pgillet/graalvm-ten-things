@@ -1,0 +1,15 @@
+{
+    "autorun": true,
+    "autokill": true,
+    "env": { "name": "value" },
+    "terminals": [
+      {
+        "name": "Bash",
+        "icon": ">",
+        "description": "For Graal Demo",
+        "open": true,
+        "focus": false,
+        "commands": []
+      }
+    ]
+  }
