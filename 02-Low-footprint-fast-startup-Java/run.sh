@@ -3,7 +3,6 @@
 
 echo "Generate small text file"
 make small.txt
-
 du -h small.txt
 
 echo "Compile"
@@ -15,10 +14,11 @@ echo "Run with GraalVM CE"
 echo "Build native image"
 $GRAALVM_CE_HOME/bin/native-image --no-server --no-fallback TopTen
 
-du -h topten
-
 echo "Inspect the shared libraries used by the topten native executable \U1F9D0"
 ldd topten
+
+echo "topten file space usage"
+du -h topten
 
 echo "Run the executable"
 /usr/bin/time -v ./topten small.txt
