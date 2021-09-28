@@ -2,6 +2,7 @@
 - Mais des processus de plus courte durée peuvent souffrir d'un temps de démarrage plus long et d'une utilisation de la mémoire relativement élevée
 
 - Intro compilation AOT/native image
+- Compilation AOT: compilation anticipée qui va traduire le bytecode en langage machine avant l’exécution du programme
 - Similaire au fonctionnement de gcc
 
 - exécutable topten: librairies standard seulement, n'a pas besoin de JVM
