@@ -9,7 +9,7 @@ $GRAALVM_CE_HOME/bin/gu list
 echo "Build"
 cd simplelanguage/
 git remote -v
-export SL_BUILD_NATIVE=true
+export SL_BUILD_NATIVE=false
 export JAVA_HOME=$GRAALVM_CE_HOME
 mvn package -DskipTests
 
