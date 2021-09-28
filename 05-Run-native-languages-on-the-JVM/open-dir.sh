@@ -4,4 +4,4 @@ SCRIPT_DIR="$(dirname ${BASH_SOURCE[0]})"
 
 cd ${SCRIPT_DIR}
 
-code -r . languages-supported.png llvm.png run.sh
+code -r . languages-supported.png oggenc.c run.sh
