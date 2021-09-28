@@ -15,4 +15,6 @@
   "java.test.editor.enableShortcuts": false,
   "editor.fontSize": 24,
   "terminal.integrated.fontSize": 24,
+  "netbeans.conflict.check": false,
+  "netbeans.verbose": false,
 }
