@@ -3,6 +3,7 @@
 
 echo "Generate large text file \U1F4DD"
 make large.txt
+du -h large.txt
 
 echo "Compile \U2699"
 $GRAALVM_EE_HOME/bin/javac TopTen.java

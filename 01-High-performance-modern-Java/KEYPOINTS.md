@@ -1,0 +1,11 @@
+- Ecosystème Java: OpenJDK, HotSpot/Oracle JDK
+- GraalVM: projet de recherche Oracle Labs
+- JDK normal avec toutes les classes/librairies core
+- Supporte Java 8, 11 & 16
+- Version communautaire / entreprise
+- Pas de Live Coding
+
+- Exemple: 
+    - WordCount avec l'API Stream
+    - Alice
+    - 30% plus rapide avec GraalVM EE
