@@ -37,7 +37,7 @@
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 
-		<!-- Add the Spring Native dependency -->
+		<!-- #1 Add the Spring Native dependency -->
 		<!-- org.springframework.experimental:spring-native provides native 
 		configuration APIs like @NativeHint as well as other mandatory classes 
 		required to run a Spring application as a native image. 
@@ -78,7 +78,7 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 
-			<!-- Add the Spring AOT plugin -->
+			<!-- #2 Add the Spring AOT plugin -->
 			<!-- The Spring AOT plugin performs ahead-of-time transformations required 
 			to improve native image compatibility and footprint. -->
 			<plugin>
@@ -103,7 +103,7 @@
 		</plugins>
 	</build>
 
-	<!-- Add the native build tools plugin -->
+	<!-- #3 Add the native build tools plugin -->
 	<!-- GraalVM provides Gradle and Maven plugins to invoke the native image 
 	compiler from your build. The following example adds a native profile that 
 	triggers the plugin during the package phase: -->
