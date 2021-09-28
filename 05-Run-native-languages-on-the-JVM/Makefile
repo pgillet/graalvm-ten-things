@@ -1,5 +1,5 @@
-build:
-	clang -c -emit-llvm oggenc.c
+#build:
+#	clang -c -emit-llvm oggenc.c
 
 clean:
-	rm *.bc *.ogg
+	rm -f *.bc *.ogg
