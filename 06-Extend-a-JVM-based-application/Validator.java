@@ -15,6 +15,10 @@ public class Validator {
     private Value validator;
 
 
+    /**
+     * Create a polyglot context for Graal guest languages that allows to
+     * load and evaluate code, here JavaScript from npm module validator.js
+     */
     public Validator() throws IOException {
         Context context = Context.newBuilder(JAVASCRIPT).build();
         InputStreamReader code = new InputStreamReader(Validator.class.getClassLoader().getResourceAsStream(VALIDATOR_NPM_MODULE_PATH));
