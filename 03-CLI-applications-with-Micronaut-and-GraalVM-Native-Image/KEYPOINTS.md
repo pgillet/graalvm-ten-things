@@ -1,0 +1,6 @@
+- GraalVM intégrée dans frameworks Micronaut, Spring Boot, Helidon, Microprofile
+- Support compilation AOT
+- Exemple: application CLI de météo
+- Bootstrap de templates d'application CLI
+- Gestion d'options de CLI avec Picocli
+- Gestion native image dans le plugin Gradle
