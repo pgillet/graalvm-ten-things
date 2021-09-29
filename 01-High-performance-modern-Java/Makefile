@@ -1,5 +1,5 @@
 large.txt: alice.txt
-	for i in $(shell seq 1000); do cat $< >> $@; done
+	for i in $(shell seq 750); do cat $< >> $@; done
 
 small.txt: alice.txt
 	head -c 1024 $< > $@
