@@ -2,10 +2,6 @@
 
 . ../utils/bash-env.sh
 
-echo "Setup"
-$GRAALVM_CE_HOME/bin/gu install native-image
-$GRAALVM_CE_HOME/bin/gu list
-
 echo "Build"
 cd simplelanguage/
 git remote -v
